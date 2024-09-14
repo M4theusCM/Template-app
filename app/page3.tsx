@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+import { Link } from 'expo-router';
+export default function PageThree() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>page 3, só exemplo</Text>
+      <Link href={'/'}> Ir para Home</Link>
       <StatusBar style="auto" />
     </View>
   );
