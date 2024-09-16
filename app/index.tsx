@@ -1,22 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Link } from 'expo-router';
+import React from 'react';
+import { useColorScheme, ColorSchemeName } from 'react-native';
+
+import Screen from '../src/home';
+
+import { ThemeProvider } from 'styled-components/native';
+import themes from '../src/themes';
 
 export default function Index() {
+  const deviceTheme: ColorSchemeName = useColorScheme(); // Valor pode ser 'light', 'dark' ou null
+
+  const themeUser = deviceTheme && themes[deviceTheme] ? themes[deviceTheme] : themes.dark;
+
   return (
-    <View style={styles.container}>
-      <Text>Pagina de index</Text>
-      <Link href={'page2'}> Ir para pagina 2</Link>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={themeUser}>
+      <Screen />
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
